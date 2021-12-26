@@ -3,6 +3,7 @@ import React from "react";
 import footerChat from "../../img/file.png";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HomeFooterNav from "../common/HomeFooterNav";
 
 const HomeFooterBlock = styled.div`
   height: 48px;
@@ -58,20 +59,6 @@ const HomeFooterBlock = styled.div`
   }
 `;
 
-const HomeFooterNav = styled.div`
-  height: 23px;
-  background: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  color: white;
-  padding: 0 20px;
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-`;
-
 const HomeFooter = () => {
   return (
     <>
@@ -105,12 +92,7 @@ const HomeFooter = () => {
           <img src={footerChat} alt="상담 챗봇" />
         </div>
       </HomeFooterBlock>
-      <HomeFooterNav>
-        <span>ABOUT</span>
-        <span>SHOWROOM</span>
-        <span>CONTACT</span>
-        <span>STOCKIST</span>
-      </HomeFooterNav>
+      <HomeFooterNav />
     </>
   );
 };
