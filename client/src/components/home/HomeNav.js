@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import logo from "../../img/e8c3edbd4eed5859becb3f3251b996c5_50870.svg";
+import { Link } from "react-router-dom";
 
 const HomeNavBlock = styled.div`
   position: fixed;
@@ -12,7 +12,7 @@ const HomeNavBlock = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  color: white;
+  color: ${(props) => props.color};
   .navLeft {
     font-size: 12px;
     span {
@@ -22,7 +22,6 @@ const HomeNavBlock = styled.div`
   .logo {
     width: 80px;
     height: 40px;
-    margin-right: 0px;
     img {
       width: 100%;
       height: 100%;
@@ -36,14 +35,14 @@ const HomeNavBlock = styled.div`
     &__country {
       span:nth-of-type(1) {
         padding: 5px 9px;
-        border: 1px solid white;
+        border: 1px solid ${(props) => props.color};
         border-radius: 6px;
-        background: #81cb7c;
+        background: ${(props) => props.buttonColor};
         margin-right: 3px;
       }
       span:nth-of-type(2) {
         padding: 5px 9px;
-        border: 1px solid white;
+        border: 1px solid ${(props) => props.color};
         border-radius: 6px;
       }
     }
@@ -51,7 +50,7 @@ const HomeNavBlock = styled.div`
     &__cart {
       span:nth-of-type(2) {
         padding: 1px 4px;
-        border: 1px solid white;
+        border: 1px solid ${(props) => props.color};
         border-radius: 4px;
         margin-left: 4px;
       }
@@ -59,16 +58,18 @@ const HomeNavBlock = styled.div`
   }
 `;
 
-const HomeNav = () => {
+const HomeNav = ({ color, buttonColor, logo }) => {
   return (
-    <HomeNavBlock>
+    <HomeNavBlock color={color} buttonColor={buttonColor}>
       <div className="navLeft">
         <span>PROJECTS</span>
         <span>COLLECTIONS</span>
         <span>SHOP</span>
       </div>
       <div className="logo">
-        <img src={logo} alt="로고" />
+        <Link to="/">
+          <img src={logo} alt="로고" />
+        </Link>
       </div>
       <div className="navRight">
         <span className="navRight__country">
@@ -76,7 +77,9 @@ const HomeNav = () => {
           <span>OVERSEAS</span>
         </span>
         <span>SEARCH</span>
-        <span>LOGIN</span>
+        <span>
+          <Link to="/login">LOGIN</Link>
+        </span>
         <span className="navRight__cart">
           <span>BAG</span>
           <span>0</span>
