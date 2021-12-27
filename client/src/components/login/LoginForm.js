@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const LoginFormBlock = styled.div`
   .login {
@@ -65,7 +66,7 @@ const LoginFormBlock = styled.div`
         outline: none;
         margin-right: 4px;
       }
-      button:nth-of-type(3) {
+      button:nth-of-type(2) {
         margin: 0;
       }
     }
@@ -84,7 +85,9 @@ const LoginForm = () => {
             <input type="text" placeholder="ID" />
             <input type="password" placeholder="PASSWORD" />
             <div className="login__Find">
-              <button>REGISTER</button>
+              <Link to="/register">
+                <button>REGISTER</button>
+              </Link>
               <button>FIND ID</button>
               <button>FIND PASSWORD</button>
             </div>
