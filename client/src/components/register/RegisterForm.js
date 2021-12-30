@@ -36,6 +36,10 @@ const RegisterFormBlock = styled.div`
     .blue .bold {
       color: #2e95ff;
     }
+    &__check {
+      display: flex;
+      align-items: center;
+    }
     &__check:nth-of-type(1) {
       margin-bottom: 30px;
       span:nth-of-type(2) {
@@ -56,42 +60,9 @@ const RegisterFormBlock = styled.div`
         text-decoration: underline;
       }
     }
-    &__check:nth-of-type(4) {
-      margin-bottom: 10px;
-      span:nth-of-type(2) {
-        margin-left: 2px;
-      }
-      span:nth-of-type(3) {
-        color: #999999;
-        font-size: 13px;
-        margin-left: 3px;
-        text-decoration: underline;
-      }
-    }
-    &__check:nth-of-type(6) {
-      margin-bottom: 10px;
-      span:nth-of-type(2) {
-        margin-left: 2px;
-      }
-      span:nth-of-type(3) {
-        color: #999999;
-        font-size: 13px;
-        margin-left: 3px;
-        text-decoration: underline;
-      }
-    }
-    &__check:nth-of-type(7) {
-      margin-bottom: 10px;
-      span:nth-of-type(2) {
-        margin-left: 2px;
-      }
-      span:nth-of-type(3) {
-        color: #999999;
-        font-size: 13px;
-        margin-left: 3px;
-        text-decoration: underline;
-      }
-    }
+    &__check:nth-of-type(4),
+    &__check:nth-of-type(6),
+    &__check:nth-of-type(7),
     &__check:nth-of-type(8) {
       margin-bottom: 10px;
       span:nth-of-type(2) {
@@ -103,10 +74,6 @@ const RegisterFormBlock = styled.div`
         margin-left: 3px;
         text-decoration: underline;
       }
-    }
-    &__check {
-      display: flex;
-      align-items: center;
     }
     .textArea {
       height: 130px;

@@ -8,8 +8,6 @@ const RegisterTopBlock = styled.div`
     width: 970px;
     margin-left: auto;
     font-size: 20px;
-    div:nth-of-type(1) {
-    }
     &__right {
       display: flex;
       margin-left: auto;
