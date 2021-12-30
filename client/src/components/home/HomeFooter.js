@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import React from "react";
-import footerChat from "../../img/file.png";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HomeFooterNav from "../common/HomeFooterNav";
+import FooterChat from "../common/FooterChat";
 
 const HomeFooterBlock = styled.div`
   height: 48px;
@@ -47,16 +47,6 @@ const HomeFooterBlock = styled.div`
       }
     }
   }
-
-  .footerChat {
-    position: fixed;
-    bottom: 45px;
-    right: 60px;
-    img {
-      width: 90px;
-      height: 70px;
-    }
-  }
 `;
 
 const HomeFooter = () => {
@@ -88,10 +78,8 @@ const HomeFooter = () => {
             <span>대표번호 +82&#40;0&#41;70 - 8828 - 8068</span>
           </div>
         </div>
-        <div className="footerChat">
-          <img src={footerChat} alt="상담 챗봇" />
-        </div>
       </HomeFooterBlock>
+      <FooterChat />
       <HomeFooterNav />
     </>
   );

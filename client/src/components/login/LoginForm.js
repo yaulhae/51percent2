@@ -3,22 +3,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const LoginFormBlock = styled.div`
+  width: 540px;
+  margin: 0 auto;
+  padding-top: 270px;
+  padding-left: 20px;
   .login {
-    width: 540px;
-    margin: 0 auto;
-    padding-top: 270px;
-    padding-left: 20px;
-    > h1:nth-of-type(1) {
+    > h1 {
       text-align: center;
       margin-bottom: 30px;
       font-size: 20px;
       width: 460px;
     }
     > h1:nth-of-type(2) {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 20px;
-      width: 460px;
+      margin-bottom: 30px;
     }
     > p {
       font-size: 12px;

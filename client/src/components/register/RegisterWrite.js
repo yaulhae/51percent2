@@ -79,8 +79,6 @@ const RegisterWriteBlock = styled.div`
       input {
         margin-bottom: 8px;
       }
-      input:nth-of-type(2) {
-      }
     }
   }
   .registerButton {
@@ -145,7 +143,7 @@ const RegisterWrite = () => {
             <td>
               <div>
                 <input className="width250" type="text" />
-                <select placeholder="직접 입력">
+                <select>
                   <option>naver.com</option>
                   <option>daum.net</option>
                   <option>hanmail.net</option>
