@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import RegisterTop from "../common/RegisterTop";
 
@@ -113,21 +113,91 @@ const RegisterFormBlock = styled.div`
   }
 `;
 
+let newCheckedItems = null;
+
+const CheckBoxInput = ({ id, checkedItems, setCheckedItems }) => {
+  const [checkBox, setCheckBox] = useState(false);
+
+  const check = (e) => {
+    if (e.target.checked) {
+      newCheckedItems = [...checkedItems, id];
+      if (id === 3) {
+        newCheckedItems = [...newCheckedItems, 4];
+      }
+      if (id === 5) {
+        newCheckedItems = [...newCheckedItems, 6];
+      }
+      if (id === 7) {
+        newCheckedItems = [...newCheckedItems, 8, 9];
+      }
+      setCheckedItems(newCheckedItems);
+    } else if (!e.target.checked) {
+      newCheckedItems = checkedItems.filter((item, index) => id !== item);
+      if (id === 3) {
+        newCheckedItems = newCheckedItems.filter((item, index) => 4 !== item);
+      }
+      if (id === 5) {
+        newCheckedItems = newCheckedItems.filter((item, index) => 6 !== item);
+      }
+      if (id === 7) {
+        newCheckedItems = newCheckedItems.filter((item, index) => 8 !== item);
+        newCheckedItems = newCheckedItems.filter((item, index) => 9 !== item);
+      }
+      setCheckedItems(newCheckedItems);
+    }
+  };
+
+  useEffect(() => {
+    if (checkedItems.includes(id)) {
+      setCheckBox(true);
+    } else if (!checkedItems.includes(id)) {
+      setCheckBox(false);
+    }
+  }, [checkedItems]);
+
+  return (
+    <input type="checkbox" checked={checkBox} onChange={(e) => check(e)} />
+  );
+};
+
 const RegisterForm = () => {
+  const [checkedItems, setCheckedItems] = useState([]);
+  const [warning, setWarning] = useState(false);
+
+  const allCheck = (e) => {
+    if (e.target.checked === true) {
+      setCheckedItems([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    } else if (e.target.checked === false) {
+      setCheckedItems([]);
+    }
+  };
+
+  const nextStep = () => {
+    if (checkedItems.includes(1) && checkedItems.includes(2)) {
+      window.location.assign("/registerWrite");
+    } else {
+      setWarning(true);
+    }
+  };
+
   return (
     <RegisterFormBlock>
       <RegisterTop />
       <div className="register__content">
         <h1>약관 동의</h1>
         <div className="register__content__check">
-          <input type="checkbox" />
+          <input type="checkbox" onChange={(e) => allCheck(e)} />
           <span className="bold">
             51PERCENT의 모든 약관을 확인하고 전체 동의합니다.
           </span>
           <span>&#40;전체동의, 선택항목도 포함됩니다.&#41;</span>
         </div>
         <div className="register__content__check">
-          <input type="checkbox" />
+          <CheckBoxInput
+            checkedItems={checkedItems}
+            setCheckedItems={setCheckedItems}
+            id={1}
+          />
           <span className="bold">&#40;필수&#41;</span>
           <span>이용약관</span>
           <span>전체보기</span>
@@ -672,7 +742,11 @@ const RegisterForm = () => {
           1. 이 약관은 2020년 1월 1일부터 적용됩니다.
         </div>
         <div className="register__content__check">
-          <input type="checkbox" />
+          <CheckBoxInput
+            checkedItems={checkedItems}
+            setCheckedItems={setCheckedItems}
+            id={2}
+          />
           <span className="bold">&#40;필수&#41;</span>
           <span>개인정보 수집 및 이용</span>
           <span>전체보기</span>
@@ -698,7 +772,11 @@ const RegisterForm = () => {
           <br />- 보유 및 이용기간 : 회원탈퇴 후 5일까지
         </div>
         <div className="register__content__check blue">
-          <input type="checkbox" />
+          <CheckBoxInput
+            checkedItems={checkedItems}
+            setCheckedItems={setCheckedItems}
+            id={3}
+          />
           <span className="bold">&#40;선택&#41;</span>
           <span>개인정보 수집 및 이용</span>
           <span>전체보기</span>
@@ -713,7 +791,11 @@ const RegisterForm = () => {
           <tbody>
             <tr>
               <td>
-                <input type="checkbox" />
+                <CheckBoxInput
+                  checkedItems={checkedItems}
+                  setCheckedItems={setCheckedItems}
+                  id={4}
+                />
               </td>
               <td>
                 - 수집/이용목적 : 주문/결제 시 상품 배송
@@ -726,7 +808,11 @@ const RegisterForm = () => {
           </tbody>
         </table>
         <div className="register__content__check blue">
-          <input type="checkbox" />
+          <CheckBoxInput
+            checkedItems={checkedItems}
+            setCheckedItems={setCheckedItems}
+            id={5}
+          />
           <span className="bold">&#40;선택&#41;</span>
           <span>개인정보 수집 및 이용</span>
           <span>전체보기</span>
@@ -741,7 +827,11 @@ const RegisterForm = () => {
           <tbody>
             <tr>
               <td>
-                <input type="checkbox" />
+                <CheckBoxInput
+                  checkedItems={checkedItems}
+                  setCheckedItems={setCheckedItems}
+                  id={6}
+                />
               </td>
               <td>
                 - 수집/이용목적 : 주문/결제 시 상품 배송
@@ -755,7 +845,11 @@ const RegisterForm = () => {
         </table>
 
         <div className="register__content__check blue">
-          <input type="checkbox" />
+          <CheckBoxInput
+            checkedItems={checkedItems}
+            setCheckedItems={setCheckedItems}
+            id={7}
+          />
           <span className="bold">&#40;선택&#41;</span>
           <span>개인정보 제 3자 제공</span>
           <span>전체보기</span>
@@ -770,7 +864,11 @@ const RegisterForm = () => {
           <tbody>
             <tr>
               <td>
-                <input type="checkbox" />
+                <CheckBoxInput
+                  checkedItems={checkedItems}
+                  setCheckedItems={setCheckedItems}
+                  id={8}
+                />
               </td>
               <td>
                 - 수집/이용목적 : 주문/결제 시 상품 배송
@@ -790,7 +888,11 @@ const RegisterForm = () => {
           <tbody>
             <tr>
               <td>
-                <input type="checkbox" />
+                <CheckBoxInput
+                  checkedItems={checkedItems}
+                  setCheckedItems={setCheckedItems}
+                  id={9}
+                />
               </td>
               <td>
                 - 수집/이용목적 : 주문/결제 시 상품 배송
@@ -802,9 +904,8 @@ const RegisterForm = () => {
             </tr>
           </tbody>
         </table>
-        <Link to="../registerWrite">
-          <button>다음단계</button>
-        </Link>
+        {warning && <p>필수 체크박스가 체크되지 않았습니다!</p>}
+        <button onClick={nextStep}>다음단계</button>
       </div>
     </RegisterFormBlock>
   );
